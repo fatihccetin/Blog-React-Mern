@@ -1,12 +1,13 @@
-import { createHistogram, applyMiddleleware, compose } from "redux";
-import {thunk} from "redux-thunk";
-import {composeWithDevtools} from "redux-devtools-extesion";
+import { createStore, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
+import {composeWithDevTools} from "redux-devtools-extension";
 import rootReducer from "./reducers/rootReducer";
 
 
-const store = createStore(rootReucer ,{},compose(
-    applyMiddleleware(thunk),
-    composeWithDevtools()
-));
+const store = createStore(
+    rootReducer ,
+    {},
+    compose(applyMiddleware(thunk),composeWithDevTools())
+);
 
 export default store;
