@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
+import postRoutes from "./routes/posts";
 
 const app = express();
 
@@ -19,11 +20,16 @@ app.get("/", (req, res) => {
   });
 });
 
+
+app.use("/posts",postRoutes);
+
+
 const PORT = process.env.PORT || 5000;
 
 
+
 mongoose
-  .connect(process.env.CONNECTİON_URL, {
+  .connect(process.env.CONNECTION_URL,  {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
