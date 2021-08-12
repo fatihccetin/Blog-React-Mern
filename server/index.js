@@ -1,23 +1,29 @@
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 import cors from "cors";
 
 const app = express();
+
+dotenv.config();
+
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("kaplanark blog");
+  res.json({
+    author: "Coding with fatih cetin",
+    message: "Mutlu yıllar",
+  });
 });
 
 const PORT = process.env.PORT || 5000;
 
-const CONNECTİON_URL =
-  "mongodb+srv://tarzanfatih:Fatih8080@cluster0.aesu0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
 mongoose
-  .connect(CONNECTİON_URL, {
+  .connect(process.env.CONNECTİON_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
