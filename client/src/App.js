@@ -68,9 +68,9 @@ const App = () => {
               <Button
                 color="primary"
                 variant="outlined"
-                startIcon={<PenIcon />}
+                startIcon={<PenIcon />}onClick={handleOpen}
               >
-                New Post
+                New Post 
               </Button>
             </Toolbar>
           </AppBar>
